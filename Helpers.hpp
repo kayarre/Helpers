@@ -169,6 +169,15 @@ typename T::value_type VectorMedian(T v)
   return v[n];
 }
 
+template<typename TTo, typename TFrom>
+TTo ConvertFrom(const TFrom& object)
+{
+  TTo t;
+  t[0] = object[0];
+  t[1] = object[1];
+  return t;
+}
+
 template<typename TForwardIterator>
 float Sum(const TForwardIterator first, const TForwardIterator last)
 {
@@ -193,6 +202,12 @@ float VectorSumOfAbsoluteDifferences(const TVector& a, const TVector& b)
   }
 
   return sum;
+}
+
+template<typename TNode>
+void OutputNode(const TNode& a)
+{
+  std::cout << "(" << a[0] << ", " << a[1] << ")" << std::endl;
 }
 
 template<typename T>

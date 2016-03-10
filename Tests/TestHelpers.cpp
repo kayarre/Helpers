@@ -575,6 +575,8 @@ bool TestHasBracketOperator()
   return true;
 }
 
+  std::cout << "Cartesian: x=" << x << " y=" << y << " z=" << z
+            << " to Spherical: r=" << r << " theta=" << theta << " phi=" << phi  << std::endl;
 
 bool TestNegativeLog()
 {
