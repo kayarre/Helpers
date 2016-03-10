@@ -119,7 +119,7 @@ bool StringsMatch(const std::string& a, const std::string& b)
  * @param z      z coordinate
  ******************************/
 void
-cartesianToSpherical( double & r,
+CartesianToSpherical( double & r,
                       double & theta,
                       double & phi,
                       double   x,
@@ -134,13 +134,14 @@ cartesianToSpherical( double & r,
 //     else
 //         theta = phi = 0.0;
 
-    if ( ( r = sqrt( x * x + y * y + z * z ) ) != 0.0 )
-    {
-        theta = atan2( y, x );
-        phi   = acos( z / r );
-    }
-    else
-        theta = phi = 0.0;
+  if ( ( r = sqrt( x * x + y * y + z * z ) ) != 0.0 )
+  {
+    theta = atan2( y, x );
+    phi   = acos( z / r );
+  }
+  else
+    theta = 0.0;
+    phi = 0.0;
 }
 
 /******************************//**
@@ -154,7 +155,7 @@ cartesianToSpherical( double & r,
  * @param phi    Azimutal angle (in radian)
  ******************************/
 void
-sphericalToCartesian( double & x,
+SphericalToCartesian( double & x,
                       double & y,
                       double & z,
                       double   r,
@@ -167,17 +168,16 @@ sphericalToCartesian( double & x,
 //     y = r * sin( theta ) * sin( phi );
 //     z = r * cos( theta );
 
-        if ( r < 0.0 )
-                throw "Negative radius in sphericalToCartesian()";
-    x = r * cos( theta ) * sin( phi );
-    y = r * sin( theta ) * sin( phi );
-    z = r * cos( phi );
+  if ( r < 0.0 ) throw "Negative radius in sphericalToCartesian()";
+  x = r * cos( theta ) * sin( phi );
+  y = r * sin( theta ) * sin( phi );
+  z = r * cos( phi );
 }
 
 void PrintSpherical(double x, double y, double z)
 {
   double r, theta, phi;
-  cartesianToSpherical(r, theta, phi, x, y, z );
+  CartesianToSpherical(r, theta, phi, x, y, z );
   std::cout << "r: " << r << " theta: " << theta << " phi: " << phi << std::endl;
 }
 
