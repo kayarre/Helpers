@@ -422,7 +422,7 @@ TValue WeightedAverage(const std::vector<TValue>& values, const std::vector<floa
 }
 
 template <typename TContainer, typename TOutput>
-void MinOfAllIndices(const TContainer& container, TOutput& output, typename std::enable_if<!std::is_pod<TOutput>::value >::type* = 0)
+void MinOfAllIndices(const TContainer& container, TOutput& output, typename std::enable_if<!std::is_pod<TOutput>::value >::type*)
 {
   // Create a container for a single component
   for(unsigned int component = 0; component < length(container[0]); ++component)
@@ -432,13 +432,13 @@ void MinOfAllIndices(const TContainer& container, TOutput& output, typename std:
 }
 
 template <typename TContainer, typename TOutput>
-void MinOfAllIndices(const TContainer& container, TOutput& output, typename std::enable_if<std::is_pod<TOutput>::value >::type* = 0)
+void MinOfAllIndices(const TContainer& container, TOutput& output, typename std::enable_if<std::is_pod<TOutput>::value >::type*)
 {
   output = Min(container);
 }
 
 template <typename TContainer, typename TOutput>
-void MaxOfAllIndices(const TContainer& container, TOutput& output, typename std::enable_if<!std::is_pod<TOutput>::value >::type* = 0)
+void MaxOfAllIndices(const TContainer& container, TOutput& output, typename std::enable_if<!std::is_pod<TOutput>::value >::type*)
 {
   // We cannot return the 'output' because it must be pre-sized and passed in because the
   // sizing procedure is very different for different containers (std::vector, itk::CovariantVector, etc)
@@ -451,7 +451,7 @@ void MaxOfAllIndices(const TContainer& container, TOutput& output, typename std:
 }
 
 template <typename TContainer, typename TOutput>
-void MaxOfAllIndices(const TContainer& container, TOutput& output, typename std::enable_if<std::is_pod<TOutput>::value >::type* = 0)
+void MaxOfAllIndices(const TContainer& container, TOutput& output, typename std::enable_if<std::is_pod<TOutput>::value >::type*)
 {
   output = Max(container);
 }

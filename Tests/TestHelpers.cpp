@@ -19,8 +19,8 @@ static void TestMinOfIndex();
 
 static void TestMinOfAllIndices();
 
-static void TestSphericalToCartesian();
-static void TestCartesianToSpherical();
+//static void TestSphericalToCartesian();
+//static void TestCartesianToSpherical();
 
 int main()
 {
@@ -40,8 +40,8 @@ int main()
 
   TestMinOfAllIndices();
 
-  TestSphericalToCartesian();
-  TestCartesianToSpherical();
+  //TestSphericalToCartesian();
+  //TestCartesianToSpherical();
 
   return 0;
 }
