@@ -103,10 +103,7 @@ bool StringsMatch(const std::string& a, const std::string& b)
   else
   {
     return false;
-<<<<<<< HEAD
   }
-=======
-    }
 }
 
 
@@ -122,8 +119,7 @@ bool StringsMatch(const std::string& a, const std::string& b)
  * @param y      y coordinate
  * @param z      z coordinate
  ******************************/
-void
-CartesianToSpherical( double & r,
+void CartesianToSpherical( double & r,
                       double & theta,
                       double & phi,
                       double   x,
@@ -158,84 +154,7 @@ CartesianToSpherical( double & r,
  * @param theta  Inclination angle (in radian)
  * @param phi    Azimutal angle (in radian)
  ******************************/
-void
-SphericalToCartesian( double & x,
-                      double & y,
-                      double & z,
-                      double   r,
-                      double   theta,
-                      double   phi )
-{
-//         if ( r < 0.0 )
-//                 throw "Negative radius in sphericalToCartesian()";
-//     x = r * sin( theta ) * cos( phi );
-//     y = r * sin( theta ) * sin( phi );
-//     z = r * cos( theta );
-
-  if ( r < 0.0 ) throw "Negative radius in sphericalToCartesian()";
-  x = r * cos( theta ) * sin( phi );
-  y = r * sin( theta ) * sin( phi );
-  z = r * cos( phi );
-}
-
-void PrintSpherical(double x, double y, double z)
-{
-  double r, theta, phi;
-  CartesianToSpherical(r, theta, phi, x, y, z );
-  std::cout << "r: " << r << " theta: " << theta << " phi: " << phi << std::endl;
->>>>>>> 2a2c56b
-}
-
-/******************************//**
- * \brief Conversion from cartesian to spherical coordinates (if the
- *        resulting radius is 0 also the azimutal and inclination
- *        angles get set to 0).
- *
- * @param r      Reference to return the radius
- * @param theta  Reference to return the inclination angle (in radian)
- * @param phi    Reference to return the azimutal angle (in radian)
- * @param x      x coordinate
- * @param y      y coordinate
- * @param z      z coordinate
- ******************************/
-void
-CartesianToSpherical( double & r,
-                      double & theta,
-                      double & phi,
-                      double   x,
-                      double   y,
-                      double   z )
-{
-//     if ( ( r = sqrt( x * x + y * y + z * z ) ) != 0.0 )
-//     {
-//         theta = acos( z / r );
-//         phi   = atan2( y, x );
-//     }
-//     else
-//         theta = phi = 0.0;
-
-  if ( ( r = sqrt( x * x + y * y + z * z ) ) != 0.0 )
-  {
-    theta = atan2( y, x );
-    phi   = acos( z / r );
-  }
-  else
-    theta = 0.0;
-    phi = 0.0;
-}
-
-/******************************//**
- * \brief Conversion from spherical to cartesian coordinates
- *
- * @param x      Reference to return the x coordinate
- * @param y      Reference to return the y coordinate
- * @param z      Reference to return the z coordinate
- * @param r      Radius (must be non-negative)
- * @param theta  Inclination angle (in radian)
- * @param phi    Azimutal angle (in radian)
- ******************************/
-void
-SphericalToCartesian( double & x,
+void SphericalToCartesian( double & x,
                       double & y,
                       double & z,
                       double   r,
